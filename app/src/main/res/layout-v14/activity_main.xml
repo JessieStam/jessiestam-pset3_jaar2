@@ -60,8 +60,7 @@
                     android:layout_weight="0.9"
                     android:background="#C5F5F0"
                     android:hint="@string/search_film_hint"
-                    android:textColorLink="@android:color/holo_blue_bright"
-                    tools:targetApi="ice_cream_sandwich" />
+                    android:textColorLink="@android:color/holo_blue_bright" />
 
                 <Button
                     android:layout_width="wrap_content"

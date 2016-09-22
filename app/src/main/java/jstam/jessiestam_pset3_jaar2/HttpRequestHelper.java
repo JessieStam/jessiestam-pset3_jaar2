@@ -6,7 +6,6 @@ import android.widget.ImageView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -19,7 +18,7 @@ import java.net.URL;
 public class HttpRequestHelper {
 
     // developer key for poster
-    static String developer_key = "f8b232b0";
+    private static final String developer_key = "f8b232b0";
 
     // strings for URL
     private static final String url1 = "http://www.omdbapi.com/?t=";
@@ -32,7 +31,7 @@ public class HttpRequestHelper {
     /*
      * Downloads information from the server and puts it into a string object.
      */
-    protected static synchronized String downloadFromServer(String title) {
+    protected static synchronized String downloadFromServer(String[] title) {
 
         // create result String
         String result = "";

@@ -115,7 +115,7 @@ public class HttpRequestHelper {
             }
         }
 
-        // return result string
+        // return result image
         return result;
     }
 }

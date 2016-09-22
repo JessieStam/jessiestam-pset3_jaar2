@@ -1,10 +1,12 @@
 package jstam.jessiestam_pset3_jaar2;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -30,6 +32,7 @@ public class SecondActivity extends MainActivity{
     TextView print_director;
     TextView print_actors;
     TextView print_summary;
+    ImageView print_poster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,8 @@ public class SecondActivity extends MainActivity{
         print_director = (TextView) findViewById(R.id.director_string);
         print_actors = (TextView) findViewById(R.id.actors_string);
         print_summary = (TextView) findViewById(R.id.summary_string);
+
+        print_poster = (ImageView) findViewById(R.id.poster_imageview);
     }
 
 
@@ -69,6 +74,27 @@ public class SecondActivity extends MainActivity{
         // get summary and print to screen
         film_summary = data_list.get(4);
         print_summary.setText(film_summary);
+
+        //create poster
+        setPoster(film_title);
+    }
+
+    public void setPoster(String poster_title) {
+
+        print_poster = HttpRequestHelper.downloadImageFromServer(poster_title);
+    }
+
+    public void addRemove(View view) {
+
+        // save image and title to mainactivity and add to recyclerview there
+        // move to second Activity
+        Intent addRemove = new Intent(this, MainActivity.class);
+
+        // move extras to SecondActivity
+        addRemove.putExtra("title", film_title);
+        addRemove.putExtra("poster", (Serializable) print_poster);
+
+        startActivity(addRemove);
 
     }
 }

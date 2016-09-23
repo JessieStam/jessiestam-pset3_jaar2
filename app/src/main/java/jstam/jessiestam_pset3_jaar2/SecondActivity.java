@@ -1,6 +1,9 @@
 package jstam.jessiestam_pset3_jaar2;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -8,6 +11,7 @@ import android.widget.TextView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Jessie on 22/09/2016.
@@ -26,6 +30,7 @@ public class SecondActivity extends MainActivity{
     String film_director;
     String film_actors;
     String film_summary;
+    String film_poster;
 
     TextView print_title;
     TextView print_year;
@@ -50,6 +55,9 @@ public class SecondActivity extends MainActivity{
         print_summary = (TextView) findViewById(R.id.summary_string);
 
         print_poster = (ImageView) findViewById(R.id.poster_imageview);
+
+        AsyncTask asyncTask = new TitleAsyncTask(this);
+        asyncTask.execute(title);
     }
 
 
@@ -59,7 +67,6 @@ public class SecondActivity extends MainActivity{
         film_title = data_list.get(0);
         print_title.setText(film_title);
 
-        // get year and print to screen
         film_year = data_list.get(1);
         print_year.setText(film_year);
 
@@ -76,12 +83,10 @@ public class SecondActivity extends MainActivity{
         print_summary.setText(film_summary);
 
         //create poster
-        setPoster(film_title);
-    }
+        film_poster = data_list.get(5);
+        Bitmap poster = BitmapFactory.decodeFile(film_poster);
 
-    public void setPoster(String poster_title) {
-
-        print_poster = HttpRequestHelper.downloadImageFromServer(poster_title);
+        print_poster.setImageBitmap(poster);
     }
 
     public void addRemove(View view) {
@@ -92,7 +97,7 @@ public class SecondActivity extends MainActivity{
 
         // move extras to SecondActivity
         addRemove.putExtra("title", film_title);
-        addRemove.putExtra("poster", (Serializable) print_poster);
+        addRemove.putExtra("poster", film_poster);
 
         startActivity(addRemove);
 

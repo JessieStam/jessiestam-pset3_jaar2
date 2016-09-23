@@ -1,41 +1,28 @@
 package jstam.jessiestam_pset3_jaar2;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.ViewGroup;
 
 /**
  * Created by Jessie on 22/09/2016.
  */
 
-public class FilmAdapter {
+public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    // field for id
-    private int id;
+    //krijgt data mee (title, poster)
 
-    // field for name
-    private String film_title;
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return null;
+    }
 
-    // field for recyclerview
-    private RecyclerView movies_list;
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-    //constructor
-    public FilmAdapter(String new_string) {film_title = new_string;}
+    }
 
-    public FilmAdapter(Integer new_id) {id = new_id}
-
-    public FilmAdapter(RecyclerView new_list) {movies_list = new_list;}
-
-    // methods
-    public String getTitle() {return film_title;}
-
-    public void setTitle(String new_title) {film_title = new_title;}
-
-    public Integer getId() {return id;}
-
-    public void setId(Integer new_id) {id = new_id;}
-
-    public RecyclerView getMovies_list() {return movies_list;}
-
-    public void setMovies_list(RecyclerView new_movies_list) {movies_list = new_movies_list;}
-
+    @Override
+    public int getItemCount() {
+        return 0;
+    }
 }

@@ -19,6 +19,11 @@ public class TitleAsyncTask extends AsyncTask<String, Integer, String> {
     Context context;
     SecondActivity secondActivity;
 
+    public TitleAsyncTask(SecondActivity activity) {
+        secondActivity = activity;
+        context = this.secondActivity.getApplicationContext();
+    }
+
     // let user know data is being downloaded
     @Override
     protected void onPreExecute() {
@@ -55,12 +60,15 @@ public class TitleAsyncTask extends AsyncTask<String, Integer, String> {
                 JSONObject actors_object = response_object.getJSONObject("Actors");
                 JSONObject summary_object = response_object.getJSONObject("Summary");
 
+                JSONObject poster_object = response_object.getJSONObject("Poster");
+
                 // add to list as String
                 data_list.add(title_object.getString("Title"));
                 data_list.add(year_object.getString("Year"));
                 data_list.add(director_object.getString("Director"));
                 data_list.add(actors_object.getString("Actors"));
                 data_list.add(summary_object.getString("Summary"));
+                data_list.add(poster_object.getString("Poster"));
 
             }
             catch (Exception e) {

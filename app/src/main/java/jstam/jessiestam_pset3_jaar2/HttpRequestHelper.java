@@ -85,37 +85,37 @@ public class HttpRequestHelper {
     /*
     * Downloads picture from the server and puts it into an ImageView object
     */
-    protected static synchronized ImageView downloadImageFromServer(String title) {
-
-        // create result string
-        ImageView result = new ImageView(null);
-
-        // complete URL string and turn into URL
-        String complete_URL_image_string = url3 + developer_key + url4 + title;
-        URL complete_image_URL = null;
-
-        try {
-            complete_image_URL = new URL(complete_URL_image_string);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        // make the connection
-        HttpURLConnection connection;
-        if (complete_image_URL != null) {
-            try {
-                connection = (HttpURLConnection) complete_image_URL.openConnection();
-
-                Bitmap film_image = BitmapFactory.decodeStream(connection.getInputStream());
-
-                result.setImageBitmap(film_image);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // return result image
-        return result;
-    }
+//    protected static synchronized ImageView downloadImageFromServer(String title) {
+//
+//        // create result string
+//        ImageView result = new ImageView(null);
+//
+//        // complete URL string and turn into URL
+//        String complete_URL_image_string = url3 + developer_key + url4 + title;
+//        URL complete_image_URL = null;
+//
+//        try {
+//            complete_image_URL = new URL(complete_URL_image_string);
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
+//
+//        // make the connection
+//        HttpURLConnection connection;
+//        if (complete_image_URL != null) {
+//            try {
+//                connection = (HttpURLConnection) complete_image_URL.openConnection();
+//
+//                Bitmap film_image = BitmapFactory.decodeStream(connection.getInputStream());
+//
+//                result.setImageBitmap(film_image);
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        // return result image
+//        return result;
+//    }
 }

@@ -56,7 +56,7 @@ public class SecondActivity extends MainActivity{
 
         print_poster = (ImageView) findViewById(R.id.poster_imageview);
 
-        AsyncTask asyncTask = new TitleAsyncTask(this);
+        TitleAsyncTask asyncTask = new TitleAsyncTask(this);
 
         asyncTask.execute(title);
     }

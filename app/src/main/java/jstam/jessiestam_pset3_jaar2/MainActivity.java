@@ -1,8 +1,10 @@
 package jstam.jessiestam_pset3_jaar2;
 
 import android.content.Intent;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -15,15 +17,36 @@ public class MainActivity extends AppCompatActivity {
     // layoutmanager object
     EditText title_input;
     String title_string;
+    String title;
+    String poster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        moviesList = (RecyclerView) findViewById(R.id.movies_list);
-        title_input = (EditText) findViewById(R.id.user_search_input);
-        title_string = title_input.getText().toString();
+        if (savedInstanceState == null) {
+
+            moviesList = (RecyclerView) findViewById(R.id.movies_list);
+            title_input = (EditText) findViewById(R.id.user_search_input);
+            title_string = title_input.getText().toString();
+
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+            FilmAdapter adapter = new FilmAdapter();
+
+            moviesList.setLayoutManager(layoutManager);
+            moviesList.setAdapter(adapter);
+
+        }
+        else {
+
+            Bundle extras = getIntent().getExtras();
+            title = extras.getString("title");
+            poster = extras.getString("poster");
+
+        }
+
+
     }
 
     public void searchFilm(View viewSearchFilm) {
@@ -34,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
         // move extras to SecondActivity
         searchTitle.putExtra("title", title_string);
 
-        Log.d("findproblem8", title_string);
-
         // clear the EditText
         title_input.getText().clear();
 
@@ -44,4 +65,27 @@ public class MainActivity extends AppCompatActivity {
 
     // maak nog een ding om die items aan te klikken en van kleur te veranderen ohnee dit gebeurt
     // in de adapter maar je moet die dan wel aanroepen
+
+    public void addToRecyclerView(View listview) {
+
+
+
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        // save story object
+        //outState.putSerializable("story", story);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        // restore story object
+        //story = (Story) savedInstanceState.getSerializable("story");
+    }
 }

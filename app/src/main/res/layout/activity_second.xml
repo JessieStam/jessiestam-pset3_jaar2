@@ -97,7 +97,7 @@
             android:textSize="20sp"
             android:padding="20dp"
             android:layout_gravity="center_horizontal"
-            android:onClick="addOrRemove"/>
+            android:onClick="addRemove"/>
 
     </LinearLayout>
 

@@ -101,6 +101,5 @@ public class SecondActivity extends MainActivity{
         addRemove.putExtra("poster", film_poster);
 
         startActivity(addRemove);
-
     }
 }

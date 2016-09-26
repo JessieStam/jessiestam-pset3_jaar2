@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView moviesList;
@@ -20,6 +22,12 @@ public class MainActivity extends AppCompatActivity {
     String title;
     String poster;
 
+    ArrayList<String> titles;
+    ArrayList<String> posters;
+
+//    String[] titles;
+//    String[] posters;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
 
-            moviesList = (RecyclerView) findViewById(R.id.movies_list);
             title_input = (EditText) findViewById(R.id.user_search_input);
             title_string = title_input.getText().toString();
 
@@ -37,12 +44,19 @@ public class MainActivity extends AppCompatActivity {
             moviesList.setLayoutManager(layoutManager);
             moviesList.setAdapter(adapter);
 
+            moviesList = (RecyclerView) findViewById(R.id.movies_list);
+
         }
         else {
 
             Bundle extras = getIntent().getExtras();
             title = extras.getString("title");
             poster = extras.getString("poster");
+
+            // add title and poster from second activity
+
+            posters.add(poster);
+            titles.add(title);
 
         }
 

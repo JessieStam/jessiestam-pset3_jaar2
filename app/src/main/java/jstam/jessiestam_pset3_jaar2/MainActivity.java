@@ -53,14 +53,10 @@ public class MainActivity extends AppCompatActivity {
             title = extras.getString("title");
             poster = extras.getString("poster");
 
-            // add title and poster from second activity
-
+            // add title and poster from second activity to list
             posters.add(poster);
             titles.add(title);
-
         }
-
-
     }
 
     public void searchFilm(View viewSearchFilm) {
